@@ -1,6 +1,6 @@
 {
   "name": "whotdeck",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A TypeScript library for creating, managing, and rendering Whot playing cards",
   "type": "module",
   "main": "dist/index.js",
