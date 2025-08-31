@@ -1,0 +1,304 @@
+{
+  "library": "whot",
+  "version": "0.1.0",
+  "description": "TypeScript library for creating, managing, and rendering Whot playing cards",
+  "exports": {
+    "types": {
+      "Suit": {
+        "file": "src/types.ts",
+        "type": "type",
+        "description": "Valid suit types for Whot cards",
+        "values": ["circle", "triangle", "square", "star", "cross", "whot"]
+      },
+      "Card": {
+        "file": "src/types.ts",
+        "type": "interface",
+        "description": "Individual card with suit, number, and unique ID",
+        "properties": {
+          "id": "string",
+          "suit": "Suit",
+          "label": "string"
+        }
+      },
+      "DeckOptions": {
+        "file": "src/types.ts",
+        "type": "interface",
+        "description": "Configuration for deck creation",
+        "properties": {
+          "numDecks": "number?",
+          "whotLabel": "string?",
+          "randomSeed": "number | string?",
+          "theme": "Partial<WhotTheme>?",
+          "renderer": "'template' | 'programmatic'?"
+        }
+      },
+      "WhotTheme": {
+        "file": "src/types.ts",
+        "type": "interface",
+        "description": "Visual theme configuration for cards",
+        "properties": {
+          "width": "number",
+          "height": "number",
+          "borderRadius": "number",
+          "borderWidth": "number",
+          "strokeColor": "string",
+          "fillColor": "string",
+          "cornerFontFamily": "string",
+          "cornerFontSize": "number",
+          "cornerInsetX": "number",
+          "cornerInsetY": "number",
+          "cornerSymbolSize": "number",
+          "suitColors": "Record<Suit, string>"
+        }
+      },
+      "RenderOptions": {
+        "file": "src/types.ts",
+        "type": "interface",
+        "description": "Options for card rendering",
+        "properties": {
+          "width": "number?",
+          "height": "number?",
+          "className": "string?",
+          "dataAttrs": "Record<string, string>?",
+          "asDom": "boolean?",
+          "theme": "Partial<WhotTheme>?",
+          "renderer": "'template' | 'programmatic'?"
+        }
+      },
+      "DealOptions": {
+        "file": "src/types.ts",
+        "type": "interface",
+        "description": "Options for dealing cards",
+        "properties": {
+          "players": "number",
+          "cardsPerPlayer": "number"
+        }
+      }
+    },
+    "classes": {
+      "Deck": {
+        "file": "src/deck.ts",
+        "type": "class",
+        "description": "Main class for managing Whot card decks",
+        "constructor": {
+          "parameters": ["DeckOptions?"],
+          "description": "Creates a new deck of Whot cards"
+        },
+        "methods": {
+          "reset": {
+            "returns": "void",
+            "description": "Resets deck to initial state"
+          },
+          "shuffle": {
+            "returns": "void",
+            "description": "Shuffles deck using Fisher-Yates algorithm"
+          },
+          "draw": {
+            "parameters": ["number?"],
+            "returns": "Card[]",
+            "description": "Draws cards from top of deck"
+          },
+          "deal": {
+            "parameters": ["DealOptions"],
+            "returns": "Card[][]",
+            "description": "Deals cards to multiple players"
+          },
+          "size": {
+            "returns": "number",
+            "description": "Returns current number of cards in deck"
+          },
+          "isEmpty": {
+            "returns": "boolean",
+            "description": "Checks if deck is empty"
+          },
+          "getFullDeckSize": {
+            "returns": "number",
+            "description": "Returns total cards in full deck"
+          },
+          "toJSON": {
+            "returns": "string",
+            "description": "Serializes deck to JSON"
+          },
+          "fromJSON": {
+            "type": "static",
+            "parameters": ["string"],
+            "returns": "Deck",
+            "description": "Creates deck from JSON string"
+          },
+          "getOptions": {
+            "returns": "Required<DeckOptions>",
+            "description": "Returns deck configuration"
+          },
+          "getCards": {
+            "returns": "Card[]",
+            "description": "Returns all cards in deck"
+          },
+          "addCards": {
+            "parameters": ["Card[]"],
+            "returns": "void",
+            "description": "Adds cards to deck"
+          },
+          "removeCards": {
+            "parameters": ["string[]"],
+            "returns": "Card[]",
+            "description": "Removes cards by ID"
+          },
+          "findCard": {
+            "parameters": ["string"],
+            "returns": "Card | undefined",
+            "description": "Finds card by ID"
+          },
+          "hasCard": {
+            "parameters": ["string"],
+            "returns": "boolean",
+            "description": "Checks if deck contains card"
+          }
+        }
+      },
+      "SeededRNG": {
+        "file": "src/rng.ts",
+        "type": "class",
+        "description": "Seeded random number generator",
+        "methods": {
+          "next": {
+            "returns": "number",
+            "description": "Returns random number 0-1"
+          },
+          "nextInt": {
+            "parameters": ["number", "number"],
+            "returns": "number",
+            "description": "Returns random integer in range"
+          },
+          "shuffle": {
+            "parameters": ["T[]"],
+            "returns": "T[]",
+            "description": "Shuffles array using Fisher-Yates"
+          }
+        }
+      }
+    },
+    "functions": {
+      "renderCard": {
+        "file": "src/render/render-card.ts",
+        "type": "function",
+        "description": "Renders single card as SVG",
+        "parameters": ["Card", "RenderOptions?"],
+        "returns": "string | SVGElement",
+        "overloads": [
+          {
+            "parameters": ["Card"],
+            "returns": "string"
+          },
+          {
+            "parameters": ["Card", "RenderOptions"],
+            "returns": "string | SVGElement"
+          }
+        ]
+      },
+      "renderGrid": {
+        "file": "src/render/render-card.ts",
+        "type": "function",
+        "description": "Renders multiple cards in grid layout",
+        "parameters": ["Card[]", "number", "RenderOptions & { gap?: number }?"],
+        "returns": "string | SVGElement"
+      },
+      "createRNG": {
+        "file": "src/rng.ts",
+        "type": "function",
+        "description": "Creates seeded random number generator",
+        "parameters": ["number | string?"],
+        "returns": "SeededRNG | null"
+      },
+      "mergeTheme": {
+        "file": "src/render/layout.ts",
+        "type": "function",
+        "description": "Merges partial theme with defaults",
+        "parameters": ["Partial<WhotTheme>?"],
+        "returns": "WhotTheme"
+      }
+    },
+    "constants": {
+      "VERSION": {
+        "file": "src/version.ts",
+        "type": "const",
+        "description": "Current library version",
+        "value": "string"
+      },
+      "DEFAULT_THEME": {
+        "file": "src/render/layout.ts",
+        "type": "const",
+        "description": "Default theme configuration",
+        "value": "WhotTheme"
+      },
+      "DECK_COMPOSITION": {
+        "file": "src/render/layout.ts",
+        "type": "const",
+        "description": "Card composition per suit",
+        "value": "Record<Suit, number[]>"
+      }
+    }
+  },
+  "rendering": {
+    "backends": {
+      "template": {
+        "description": "Uses embedded SVG templates for pixel-perfect rendering",
+        "advantages": ["Exact visual fidelity", "Fast string replacement"],
+        "disadvantages": ["Larger bundle size"]
+      },
+      "programmatic": {
+        "description": "Generates SVG programmatically for maximum flexibility",
+        "advantages": ["Full customization", "Smaller bundle size"],
+        "disadvantages": ["Slightly different appearance"]
+      }
+    }
+  },
+  "deck": {
+    "composition": {
+      "total": 54,
+      "suits": {
+        "circle": 12,
+        "triangle": 12,
+        "square": 9,
+        "cross": 9,
+        "star": 7,
+        "whot": 5
+      }
+    },
+    "numbers": {
+      "circle": [1, 2, 3, 4, 5, 7, 8, 10, 11, 12, 13, 14],
+      "triangle": [1, 2, 3, 4, 5, 7, 8, 10, 11, 12, 13, 14],
+      "square": [1, 2, 3, 5, 7, 10, 11, 13, 14],
+      "cross": [1, 2, 3, 5, 7, 10, 11, 13, 14],
+      "star": [1, 2, 3, 4, 5, 7, 8],
+      "whot": ["WHOT"]
+    }
+  },
+  "build": {
+    "scripts": {
+      "dev": "Development build with watch mode",
+      "build": "Production build",
+      "build:prod": "Production build with minification and obfuscation",
+      "test": "Run tests with coverage",
+      "lint": "Run ESLint",
+      "format": "Run Prettier",
+      "example": "Start demo application"
+    },
+    "outputs": {
+      "dist/index.js": "CommonJS bundle",
+      "dist/index.esm.js": "ES module bundle",
+      "dist/*.d.ts": "TypeScript declarations"
+    }
+  },
+  "testing": {
+    "framework": "Vitest",
+    "environment": "jsdom",
+    "coverage": {
+      "target": "95%+ for core functionality",
+      "files": [
+        "tests/deck.spec.ts",
+        "tests/render.spec.ts",
+        "tests/rng.spec.ts"
+      ]
+    }
+  }
+}

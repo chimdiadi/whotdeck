@@ -1,0 +1,32 @@
+module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    es2020: true,
+    node: true,
+  },
+  extends: ['google', 'prettier'],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint', 'prettier'],
+  rules: {
+    'prettier/prettier': 'error',
+    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
+    'require-jsdoc': 'off',
+    'valid-jsdoc': 'off',
+    'max-len': ['error', { code: 100 }],
+    indent: ['error', 2],
+    'object-curly-spacing': ['error', 'always'],
+    'array-bracket-spacing': ['error', 'never'],
+    'comma-dangle': ['error', 'always-multiline'],
+    quotes: ['error', 'single'],
+    semi: ['error', 'always'],
+  },
+  ignorePatterns: ['dist/', 'node_modules/', 'examples/', 'src/assets/templates.ts'],
+};

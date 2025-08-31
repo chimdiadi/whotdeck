@@ -1,0 +1,72 @@
+{
+  "name": "whotdeck",
+  "version": "0.1.0",
+  "description": "A TypeScript library for creating, managing, and rendering Whot playing cards",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest --watch",
+    "test:templates": "node scripts/validate-templates.js",
+    "dev": "rollup -c --watch",
+    "build:dev": "NODE_ENV=development rollup -c",
+    "build:prod": "NODE_ENV=production ROLLUP_MINIFY=true rollup -c",
+    "build:prod:obf": "NODE_ENV=production ROLLUP_MINIFY=true OBFUSCATE=true rollup -c",
+    "example": "cd examples/simple-ui && npm run dev",
+    "example:build": "cd examples/simple-ui && npm run build",
+    "prepublishOnly": "npm run clean && npm run build:prod"
+  },
+  "keywords": [
+    "whot",
+    "cards",
+    "game",
+    "typescript",
+    "svg",
+    "rendering"
+  ],
+  "author": "ACME Corp",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "jsdom": "^23.0.1",
+    "prettier": "^3.1.1",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.6.1",
+    "rollup-plugin-javascript-obfuscator": "^1.0.3",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "vitest": "^1.6.1",
+    "@vitest/coverage-v8": "^1.6.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

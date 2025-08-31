@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whot Cards Demo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Whot Cards Library Demo</h1>
+        <p>A TypeScript library for creating, managing, and rendering Whot playing cards</p>
+      </header>
+
+      <main>
+        <section class="controls">
+          <h2>Deck Controls</h2>
+          <div class="control-group">
+            <label for="numDecks">Number of Decks:</label>
+            <input type="number" id="numDecks" min="1" max="10" value="1" />
+          </div>
+
+          <div class="control-group">
+            <label for="whotLabel">Whot Label:</label>
+            <input type="text" id="whotLabel" value="WHOT" maxlength="10" />
+          </div>
+
+          <div class="control-group">
+            <label for="randomSeed">Random Seed (optional):</label>
+            <input type="text" id="randomSeed" placeholder="Leave empty for random" />
+          </div>
+
+          <div class="control-group">
+            <label for="renderer">Renderer:</label>
+            <select id="renderer">
+              <option value="template">Template (SVG)</option>
+              <option value="programmatic">Programmatic</option>
+            </select>
+          </div>
+
+          <div class="button-group">
+            <button id="newDeck">New Deck</button>
+            <button id="shuffle">Shuffle</button>
+            <button id="reset">Reset</button>
+          </div>
+        </section>
+
+        <section class="actions">
+          <h2>Actions</h2>
+          <div class="control-group">
+            <label for="drawCount">Draw Cards:</label>
+            <input type="number" id="drawCount" min="1" max="10" value="1" />
+            <button id="draw">Draw</button>
+          </div>
+
+          <div class="control-group">
+            <label for="dealPlayers">Deal to Players:</label>
+            <input type="number" id="dealPlayers" min="2" max="10" value="4" />
+            <input
+              type="number"
+              id="dealCards"
+              min="1"
+              max="10"
+              value="5"
+              placeholder="Cards per player"
+            />
+            <button id="deal">Deal</button>
+          </div>
+        </section>
+
+        <section class="themes">
+          <h2>Themes</h2>
+          <div class="theme-buttons">
+            <button class="theme-btn" data-theme="light">Light</button>
+            <button class="theme-btn" data-theme="dark">Dark</button>
+            <button class="theme-btn" data-theme="high-contrast">High Contrast</button>
+          </div>
+        </section>
+
+        <section class="display">
+          <h2>Deck Status</h2>
+          <div class="status">
+            <span>Cards in deck: <strong id="deckSize">54</strong></span>
+            <span>Total cards: <strong id="totalCards">54</strong></span>
+          </div>
+        </section>
+
+        <section class="cards-display">
+          <h2>Cards</h2>
+          <div class="display-controls">
+            <label for="gridCols">Grid Columns:</label>
+            <input type="number" id="gridCols" min="1" max="10" value="4" />
+            <button id="exportSvg">Export SVG</button>
+          </div>
+          <div id="cardsContainer"></div>
+        </section>
+
+        <section class="hands" id="handsSection" style="display: none">
+          <h2>Player Hands</h2>
+          <div id="handsContainer"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="main.ts"></script>
+  </body>
+</html>
