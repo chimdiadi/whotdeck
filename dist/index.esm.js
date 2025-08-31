@@ -520,7 +520,9 @@ function renderCardTemplate(card, _theme, options) {
         throw new Error(`No template found for card: ${card.suit} ${card.label}`);
     }
     const cleanedTemplate = cleanSVGTemplate(template);
-    const svg = replaceTspanText(cleanedTemplate, card.label);
+    let svg = replaceTspanText(cleanedTemplate, card.label);
+    // Templates are now normalized, so no CSS processing needed
+    // The templates already have consistent CSS class structure
     const title = `${card.suit} ${card.label}`;
     const description = `Whot playing card with suit ${card.suit} and label ${card.label}`;
     let customAttrsString = ' role="img" aria-labelledby="title desc"';
@@ -698,7 +700,7 @@ function renderGrid(cards, cols, options = {}) {
 /**
  * Current version of the Whot library.
  */
-const VERSION = '0.1.0';
+const VERSION = '1.0.0';
 
 export { DEFAULT_THEME, Deck, SeededRNG, VERSION, createRNG, mergeTheme, renderCard, renderGrid };
 //# sourceMappingURL=index.esm.js.map
