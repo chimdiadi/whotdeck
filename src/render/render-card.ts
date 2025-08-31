@@ -14,14 +14,21 @@ function getTemplateForCard(card: Card): string | undefined {
 /**
  * Render a card using the template backend.
  */
-function renderCardTemplate(card: Card, _theme: WhotTheme, options: RenderOptions): string {
+function renderCardTemplate(
+  card: Card,
+  _theme: WhotTheme,
+  options: RenderOptions,
+): string {
   const template = getTemplateForCard(card);
   if (!template) {
     throw new Error(`No template found for card: ${card.suit} ${card.label}`);
   }
 
   const cleanedTemplate = cleanSVGTemplate(template);
-  const svg = replaceTspanText(cleanedTemplate, card.label);
+  let svg = replaceTspanText(cleanedTemplate, card.label);
+
+  // Templates are now normalized, so no CSS processing needed
+  // The templates already have consistent CSS class structure
 
   const title = `${card.suit} ${card.label}`;
   const description = `Whot playing card with suit ${card.suit} and label ${card.label}`;
