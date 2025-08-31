@@ -54,16 +54,16 @@ function validateTemplate(suit, templateFile, label = '1') {
     
     // Check key elements
     const checks = [
-      { name: 'CSS Classes', test: () => cleanRendered.includes('class="cls-1"') && cleanRendered.includes('class="cls-2"') && cleanRendered.includes('class="cls-3"') },
+      { name: 'CSS Classes', test: () => cleanRendered.includes('class="cls-back"') && cleanRendered.includes('class="cls-2"') && cleanRendered.includes('class="cls-3"') },
       { name: 'Namespace', test: () => cleanRendered.includes('<g xmlns="http://www.w3.org/2000/svg"') },
-      { name: 'Text Replacement', test: () => cleanRendered.includes(`<tspan x="0" y="0">${label}</tspan>`) },
+      { name: 'Text Replacement', test: () => cleanRendered.includes(`<tspan x="0" y="0" class="card-number">${label}</tspan>`) },
     ];
     
     // Suit-specific checks
     if (suit === 'circle') {
       checks.push({ name: 'Circle Elements', test: () => cleanRendered.includes('<circle') && cleanRendered.includes('cx="37.73"') });
     } else if (suit === 'cross') {
-      checks.push({ name: 'Cross Elements', test: () => cleanRendered.includes('<polygon') && cleanRendered.includes('class="cls-4"') });
+      checks.push({ name: 'Cross Elements', test: () => cleanRendered.includes('<polygon') && cleanRendered.includes('class="cls-2"') });
     } else if (suit === 'square') {
       checks.push({ name: 'Square Elements', test: () => cleanRendered.includes('<rect') && cleanRendered.includes('x="17" y="31.88"') });
     } else if (suit === 'triangle') {
@@ -71,7 +71,7 @@ function validateTemplate(suit, templateFile, label = '1') {
     } else if (suit === 'star') {
       checks.push({ name: 'Star Elements', test: () => cleanRendered.includes('<polygon') && cleanRendered.includes('points="46.77 56.01 51.93 71.87 38.43 62.07 24.94 71.87 30.09 56.01 16.6 46.21 33.28 46.21 38.43 30.35 43.59 46.21 60.27 46.21 46.77 56.01"') });
     } else if (suit === 'whot') {
-      checks.push({ name: 'Whot Elements', test: () => cleanRendered.includes('<path') && cleanRendered.includes('class="cls-4"') && cleanRendered.includes('class="cls-5"') });
+      checks.push({ name: 'Whot Elements', test: () => cleanRendered.includes('<path') && cleanRendered.includes('class="cls-stroke"') && cleanRendered.includes('class="cls-none"') });
     }
     
     let allPassed = true;
@@ -104,7 +104,7 @@ async function main() {
     { suit: 'cross', file: '1-Cross-text.svg', label: '1' },
     { suit: 'square', file: '1-Square-text.svg', label: '1' },
     { suit: 'triangle', file: '1-Triangle-text.svg', label: '1' },
-    { suit: 'star', file: '1-Start-text.svg', label: '1' },
+    { suit: 'star', file: '1-Star-text.svg', label: '1' },
     { suit: 'whot', file: 'Whot-text.svg', label: '20' },
   ];
   

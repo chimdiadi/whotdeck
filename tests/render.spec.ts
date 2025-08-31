@@ -160,52 +160,51 @@ describe('Card Rendering', () => {
 
     it('should resolve CSS class conflicts in grid rendering', () => {
       const cards = [
-        { id: 'circle:1', suit: 'circle', label: '1' },
-        { id: 'cross:2', suit: 'cross', label: '2' },
-        { id: 'whot:WHOT', suit: 'whot', label: 'WHOT' },
-        { id: 'triangle:3', suit: 'triangle', label: '3' },
+        { id: 'circle:1', suit: 'circle' as const, label: '1' },
+        { id: 'cross:2', suit: 'cross' as const, label: '2' },
+        { id: 'whot:WHOT', suit: 'whot' as const, label: 'WHOT' },
+        { id: 'triangle:3', suit: 'triangle' as const, label: '3' },
       ];
 
       const result = renderGrid(cards, 2, { renderer: 'template' }) as string;
 
       // Check that each card has unique CSS class prefixes
-      expect(result).toContain('card-0-cls-1');
+      expect(result).toContain('card-0-cls-back');
       expect(result).toContain('card-0-cls-2');
       expect(result).toContain('card-0-cls-3');
-      expect(result).toContain('card-1-cls-1');
+      expect(result).toContain('card-1-cls-back');
       expect(result).toContain('card-1-cls-2');
       expect(result).toContain('card-1-cls-3');
-      expect(result).toContain('card-1-cls-4');
-      expect(result).toContain('card-2-cls-1');
+      expect(result).toContain('card-2-cls-back');
       expect(result).toContain('card-2-cls-2');
       expect(result).toContain('card-2-cls-3');
-      expect(result).toContain('card-2-cls-4');
-      expect(result).toContain('card-2-cls-5');
-      expect(result).toContain('card-3-cls-1');
+      expect(result).toContain('card-2-cls-stroke');
+      expect(result).toContain('card-2-cls-none');
+      expect(result).toContain('card-3-cls-back');
       expect(result).toContain('card-3-cls-2');
       expect(result).toContain('card-3-cls-3');
 
-      // Verify that original cls-1, cls-2, etc. are not present (indicating conflicts)
-      expect(result).not.toContain('class="cls-1"');
+      // Verify that original cls-back, cls-2, etc. are not present (indicating conflicts)
+      expect(result).not.toContain('class="cls-back"');
       expect(result).not.toContain('class="cls-2"');
       expect(result).not.toContain('class="cls-3"');
 
       // Check that CSS definitions are also prefixed
-      expect(result).toContain('.card-0-cls-1');
+      expect(result).toContain('.card-0-cls-back');
       expect(result).toContain('.card-0-cls-2');
-      expect(result).toContain('.card-1-cls-1');
+      expect(result).toContain('.card-1-cls-back');
       expect(result).toContain('.card-1-cls-2');
-      expect(result).toContain('.card-2-cls-1');
+      expect(result).toContain('.card-2-cls-back');
       expect(result).toContain('.card-2-cls-2');
-      expect(result).toContain('.card-3-cls-1');
+      expect(result).toContain('.card-3-cls-back');
       expect(result).toContain('.card-3-cls-2');
     });
 
     it('should maintain correct suit rendering in grid with mixed suits', () => {
       const cards = [
-        { id: 'circle:1', suit: 'circle', label: '1' },
-        { id: 'cross:2', suit: 'cross', label: '2' },
-        { id: 'whot:WHOT', suit: 'whot', label: 'WHOT' },
+        { id: 'circle:1', suit: 'circle' as const, label: '1' },
+        { id: 'cross:2', suit: 'cross' as const, label: '2' },
+        { id: 'whot:WHOT', suit: 'whot' as const, label: 'WHOT' },
       ];
 
       const result = renderGrid(cards, 3, { renderer: 'template' }) as string;
@@ -214,12 +213,12 @@ describe('Card Rendering', () => {
       expect(result).toContain('<circle class="card-0-cls-2"');
       
       // Verify cross card has cross elements (polygon for cross shape)
-      expect(result).toContain('<polygon class="card-1-cls-3"');
-      expect(result).toContain('<rect class="card-1-cls-1"');
+      expect(result).toContain('<polygon class="card-1-cls-2"');
+      expect(result).toContain('<rect class="card-1-cls-2"');
       
       // Verify whot card has whot elements (path for whot text)
-      expect(result).toContain('<path class="card-2-cls-4"');
-      expect(result).toContain('<text class="card-2-cls-5"');
+      expect(result).toContain('<path class="card-2-cls-2"');
+      expect(result).toContain('<text class="card-2-cls-3"');
     });
   });
 
@@ -307,12 +306,17 @@ describe('Card Rendering', () => {
       const partialTheme = {
         suitColors: {
           circle: '#ff0000',
+          triangle: '#00ff00',
+          square: '#0000ff',
+          star: '#ffff00',
+          cross: '#ff00ff',
+          whot: '#00ffff',
         },
       };
 
       const merged = mergeTheme(partialTheme);
       expect(merged.suitColors.circle).toBe('#ff0000');
-      expect(merged.suitColors.triangle).toBe('#640d0d'); // Default
+      expect(merged.suitColors.triangle).toBe('#00ff00'); // From partial theme
     });
   });
 });

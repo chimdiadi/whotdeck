@@ -40,7 +40,7 @@ describe('Template Validation', () => {
       const cleanRendered = cleanRenderedForComparison(rendered);
       
       // Check that key elements are present
-      expect(cleanRendered).toContain('class="cls-1"');
+      expect(cleanRendered).toContain('class="cls-back"');
       expect(cleanRendered).toContain('class="cls-2"');
       expect(cleanRendered).toContain('class="cls-3"');
       expect(cleanRendered).toContain('<circle');
@@ -49,7 +49,7 @@ describe('Template Validation', () => {
       expect(cleanRendered).toContain('r="20.8"');
       
       // Check that the card number is correctly replaced
-      expect(cleanRendered).toContain('<tspan x="0" y="0">1</tspan>');
+      expect(cleanRendered).toContain('<tspan x="0" y="0" class="card-number">1</tspan>');
       
       // Check that xmlns is properly added to g element
       expect(cleanRendered).toContain('<g xmlns="http://www.w3.org/2000/svg"');
@@ -66,10 +66,10 @@ describe('Template Validation', () => {
       const cleanRendered = cleanRenderedForComparison(rendered);
       
       // Check that key elements are present
-      expect(cleanRendered).toContain('class="cls-1"');
+      expect(cleanRendered).toContain('class="cls-back"');
       expect(cleanRendered).toContain('class="cls-2"');
       expect(cleanRendered).toContain('class="cls-3"');
-      expect(cleanRendered).toContain('class="cls-4"');
+      // Cross template no longer uses cls-4, it uses cls-back instead
       expect(cleanRendered).toContain('<polygon');
       expect(cleanRendered).toContain('<rect');
       
@@ -77,7 +77,7 @@ describe('Template Validation', () => {
       expect(cleanRendered).toContain('points="32.64 57.71 32.64 73.38 42.82 73.38 42.82 57.71');
       
       // Check that the card number is correctly replaced
-      expect(cleanRendered).toContain('<tspan x="0" y="0">1</tspan>');
+      expect(cleanRendered).toContain('<tspan x="0" y="0" class="card-number">1</tspan>');
       
       // Check that xmlns is properly added to g element
       expect(cleanRendered).toContain('<g xmlns="http://www.w3.org/2000/svg"');
@@ -94,7 +94,7 @@ describe('Template Validation', () => {
       const cleanRendered = cleanRenderedForComparison(rendered);
       
       // Check that key elements are present
-      expect(cleanRendered).toContain('class="cls-1"');
+      expect(cleanRendered).toContain('class="cls-back"');
       expect(cleanRendered).toContain('class="cls-2"');
       expect(cleanRendered).toContain('class="cls-3"');
       expect(cleanRendered).toContain('<rect');
@@ -103,7 +103,7 @@ describe('Template Validation', () => {
       expect(cleanRendered).toContain('x="17" y="31.88" width="41.46" height="41.46"');
       
       // Check that the card number is correctly replaced
-      expect(cleanRendered).toContain('<tspan x="0" y="0">1</tspan>');
+      expect(cleanRendered).toContain('<tspan x="0" y="0" class="card-number">1</tspan>');
       
       // Check that xmlns is properly added to g element
       expect(cleanRendered).toContain('<g xmlns="http://www.w3.org/2000/svg"');
@@ -120,7 +120,7 @@ describe('Template Validation', () => {
       const cleanRendered = cleanRenderedForComparison(rendered);
       
       // Check that key elements are present
-      expect(cleanRendered).toContain('class="cls-1"');
+      expect(cleanRendered).toContain('class="cls-back"');
       expect(cleanRendered).toContain('class="cls-2"');
       expect(cleanRendered).toContain('class="cls-3"');
       expect(cleanRendered).toContain('<polygon');
@@ -129,7 +129,7 @@ describe('Template Validation', () => {
       expect(cleanRendered).toContain('points="37.73 31.86 13.77 73.36 61.69 73.36 37.73 31.86"');
       
       // Check that the card number is correctly replaced
-      expect(cleanRendered).toContain('<tspan x="0" y="0">1</tspan>');
+      expect(cleanRendered).toContain('<tspan x="0" y="0" class="card-number">1</tspan>');
       
       // Check that xmlns is properly added to g element
       expect(cleanRendered).toContain('<g xmlns="http://www.w3.org/2000/svg"');
@@ -138,7 +138,7 @@ describe('Template Validation', () => {
 
   describe('Star Suit', () => {
     it('should render star card matching template structure', () => {
-      const template = readTemplateFile('1-Start-text.svg');
+      const template = readTemplateFile('1-Star-text.svg');
       const card = { suit: 'star', label: '1', id: 'star:1' };
       const rendered = renderCard(card);
       
@@ -146,7 +146,7 @@ describe('Template Validation', () => {
       const cleanRendered = cleanRenderedForComparison(rendered);
       
       // Check that key elements are present
-      expect(cleanRendered).toContain('class="cls-1"');
+      expect(cleanRendered).toContain('class="cls-back"');
       expect(cleanRendered).toContain('class="cls-2"');
       expect(cleanRendered).toContain('class="cls-3"');
       expect(cleanRendered).toContain('<polygon');
@@ -155,7 +155,7 @@ describe('Template Validation', () => {
       expect(cleanRendered).toContain('points="46.77 56.01 51.93 71.87 38.43 62.07 24.94 71.87 30.09 56.01 16.6 46.21 33.28 46.21 38.43 30.35 43.59 46.21 60.27 46.21 46.77 56.01"');
       
       // Check that the card number is correctly replaced
-      expect(cleanRendered).toContain('<tspan x="0" y="0">1</tspan>');
+      expect(cleanRendered).toContain('<tspan x="0" y="0" class="card-number">1</tspan>');
       
       // Check that xmlns is properly added to g element
       expect(cleanRendered).toContain('<g xmlns="http://www.w3.org/2000/svg"');
@@ -172,15 +172,15 @@ describe('Template Validation', () => {
       const cleanRendered = cleanRenderedForComparison(rendered);
       
       // Check that key elements are present
-      expect(cleanRendered).toContain('class="cls-1"');
+      expect(cleanRendered).toContain('class="cls-back"');
       expect(cleanRendered).toContain('class="cls-2"');
       expect(cleanRendered).toContain('class="cls-3"');
-      expect(cleanRendered).toContain('class="cls-4"');
-      expect(cleanRendered).toContain('class="cls-5"');
+      expect(cleanRendered).toContain('class="cls-stroke"');
+      expect(cleanRendered).toContain('class="cls-none"');
       expect(cleanRendered).toContain('<path');
       
       // Check that the whot label is correctly replaced
-      expect(cleanRendered).toContain('<tspan x="0" y="0">20</tspan>');
+      expect(cleanRendered).toContain('<tspan x="0" y="0" class="card-number">20</tspan>');
       
       // Check that xmlns is properly added to g element
       expect(cleanRendered).toContain('<g xmlns="http://www.w3.org/2000/svg"');
@@ -196,18 +196,20 @@ describe('Template Validation', () => {
         const rendered = renderCard(card);
         
         // All templates should have these basic classes
-        expect(rendered).toContain('class="cls-1"');
+        expect(rendered).toContain('class="cls-back"');
         expect(rendered).toContain('class="cls-2"');
         expect(rendered).toContain('class="cls-3"');
         
-        // Cross and Whot have additional classes
-        if (suit === 'cross' || suit === 'whot') {
-          expect(rendered).toContain('class="cls-4"');
+        // Cross template no longer uses cls-4, it uses cls-back instead
+        // Cross has additional classes
+        if (suit === 'cross') {
+          // Cross template uses cls-back, cls-2, cls-3
         }
         
-        // Whot has an additional class
+        // Whot has additional classes
         if (suit === 'whot') {
-          expect(rendered).toContain('class="cls-5"');
+          expect(rendered).toContain('class="cls-stroke"');
+          expect(rendered).toContain('class="cls-none"');
         }
       });
     });
@@ -236,7 +238,7 @@ describe('Template Validation', () => {
           const card = { suit, label: number, id: `${suit}:${number}` };
           const rendered = renderCard(card);
           
-          expect(rendered).toContain(`<tspan x="0" y="0">${number}</tspan>`);
+          expect(rendered).toContain(`<tspan x="0" y="0" class="card-number">${number}</tspan>`);
         });
       });
     });
@@ -245,7 +247,7 @@ describe('Template Validation', () => {
       const card = { suit: 'whot', label: '20', id: 'whot:20' };
       const rendered = renderCard(card);
       
-      expect(rendered).toContain('<tspan x="0" y="0">20</tspan>');
+      expect(rendered).toContain('<tspan x="0" y="0" class="card-number">20</tspan>');
     });
   });
 });

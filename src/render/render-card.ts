@@ -55,9 +55,10 @@ function renderCardTemplate(
   
   if (cssPrefix) {
     // Replace CSS class references with prefixed versions
-    processedSvg = processedSvg.replace(/class="cls-(\d+)"/g, `class="${cssPrefix}-cls-$1"`);
+    // Handle both numeric (cls-1, cls-2, etc.) and named (cls-back, cls-none, cls-stroke, etc.) classes
+    processedSvg = processedSvg.replace(/class="cls-([^"]+)"/g, `class="${cssPrefix}-cls-$1"`);
     // Update CSS definitions with prefixed class names
-    processedSvg = processedSvg.replace(/\.cls-(\d+)/g, `.${cssPrefix}-cls-$1`);
+    processedSvg = processedSvg.replace(/\.cls-([^,\s{]+)/g, `.${cssPrefix}-cls-$1`);
   }
 
   const svgWithAccessibility = processedSvg.replace(
