@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.46 105.22"><defs><style>.cls-1{fill:#fff;stroke:#231f20;stroke-width:.46px;}.cls-2,.cls-3{fill:#640d0d;}.cls-3{font-family:ClarendonBT-Black, 'Clarendon Blk BT';font-size:12px;font-weight:800;}</style></defs><g id="Layer_1-2"><path class="cls-1" d="M6.18.23h63.1c3.29,0,5.95,2.67,5.95,5.95v92.86c0,3.29-2.67,5.95-5.95,5.95H6.18c-3.29,0-5.95-2.67-5.95-5.95V6.18C.23,2.89,2.89.23,6.18.23Z"/><polygon class="cls-2" points="46.77 56.01 51.93 71.87 38.43 62.07 24.94 71.87 30.09 56.01 16.6 46.21 33.28 46.21 38.43 30.35 43.59 46.21 60.27 46.21 46.77 56.01"/><text class="cls-3" transform="translate(5.21 12.38)"><tspan x="0" y="0">1</tspan></text><polygon class="cls-2" points="11.33 20.07 12.57 23.9 9.31 21.53 6.06 23.9 7.3 20.07 4.04 17.7 8.07 17.7 9.31 13.87 10.56 17.7 14.58 17.7 11.33 20.07"/><text class="cls-3" transform="translate(70.36 92.79) rotate(-180)"><tspan x="0" y="0">1</tspan></text><polygon class="cls-2" points="64.25 85.11 63 81.28 66.26 83.65 69.52 81.28 68.28 85.11 71.53 87.48 67.51 87.48 66.26 91.3 65.02 87.48 60.99 87.48 64.25 85.11"/></g></svg>
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" viewBox="0 0 75.46 105.22"><defs><style>.cls-back{fill:#fff;stroke:#231f20;stroke-width:.46px;}.cls-2,.cls-3{fill:#640d0d;}.cls-3{font-family:ClarendonBT-Black, 'Clarendon Blk BT';font-size:12px;font-weight:800;}</style><style type="text/css">/* ===== Shared Whot Card Styles (normalized) ===== */
+.card-number {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  fill: #640d0d;
+  line-height: 1;
+}
+/* Optional helpers you can use (not applied automatically) */
+.card-number--large { font-size: 72px; }
+.card-number--medium { font-size: 48px; }
+.card-number--small { font-size: 28px; }
+/* You may override fill per suit in your own CSS if desired:
+   .card--circle .card-number { fill: #0B84F3; }
+   .card--cross  .card-number { fill: #E4572E; }
+   .card--square .card-number { fill: #76B7B2; }
+   .card--triangle .card-number { fill: #F1CE63; }
+   .card--star .card-number { fill: #59A14F; }
+*/</style></defs><g id="Layer_1-2"><path class="cls-back" d="M6.18.23h63.1c3.29,0,5.95,2.67,5.95,5.95v92.86c0,3.29-2.67,5.95-5.95,5.95H6.18c-3.29,0-5.95-2.67-5.95-5.95V6.18C.23,2.89,2.89.23,6.18.23Z" /><polygon class="cls-2" points="46.77 56.01 51.93 71.87 38.43 62.07 24.94 71.87 30.09 56.01 16.6 46.21 33.28 46.21 38.43 30.35 43.59 46.21 60.27 46.21 46.77 56.01" /><text class="cls-3" transform="translate(5.21 12.38)"><tspan x="0" y="0" class="card-number">1</tspan></text><polygon class="cls-2" points="11.33 20.07 12.57 23.9 9.31 21.53 6.06 23.9 7.3 20.07 4.04 17.7 8.07 17.7 9.31 13.87 10.56 17.7 14.58 17.7 11.33 20.07" /><text class="cls-3" transform="translate(70.36 92.79) rotate(-180)"><tspan x="0" y="0" class="card-number">1</tspan></text><polygon class="cls-2" points="64.25 85.11 63 81.28 66.26 83.65 69.52 81.28 68.28 85.11 71.53 87.48 67.51 87.48 66.26 91.3 65.02 87.48 60.99 87.48 64.25 85.11" /></g></svg>
